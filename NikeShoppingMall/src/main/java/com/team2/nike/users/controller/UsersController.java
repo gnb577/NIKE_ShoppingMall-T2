@@ -20,48 +20,74 @@ import com.team2.nike.users.service.UsersService;
 
 @Controller
 public class UsersController {
-	 @Autowired
-	 private UsersService service;
-	
-	 @RequestMapping("/users/login.do")
-		public ModelAndView login(ModelAndView mView, UsersDto dto, HttpServletRequest request,@RequestParam String url, HttpSession session) {
-		 	
-		 	service.login(dto, session);
-		 
-		 	String encodedUrl=URLEncoder.encode(url);
-			mView.addObject("url", url);
-			mView.addObject("encodedUrl", encodedUrl);
-			mView.setViewName("users/login");
-		 	return mView;
-		}
-	 
-	 @RequestMapping(value="/users/loginform.do")
-		public String loginform(HttpServletRequest request) {
-		 	return "/users/loginform";
-		}
-		@RequestMapping("/users/logout.do")
-		public String logout(HttpSession session) {
-			session.removeAttribute("users_id");
-			return "/users/logout";
-		}
+
+	@Autowired
+	private UsersService service;
+	// 회원 로그인
+	@RequestMapping("/users/login.do")
+	public ModelAndView login(ModelAndView mView, UsersDto dto, HttpServletRequest request,@RequestParam String url, HttpSession session) {
+
+		 service.login(dto, session);
+
+		 String encodedUrl=URLEncoder.encode(url);
+		 mView.addObject("url", url);
+		 mView.addObject("encodedUrl", encodedUrl);
+		 mView.setViewName("users/login");
+		 return mView;
+	}
+	// 회원 로그인폼
+	@RequestMapping(value="/users/loginform.do")
+	public String loginform(HttpServletRequest request) {
+		 return "/users/loginform";
+	}
+	// 회원 로그아웃
+	 @RequestMapping("/users/logout.do")
+	 public String logout(HttpSession session) {
+		 session.removeAttribute("users_id");
+		 return "/users/logout";
+	}
+	 // 회원 가입 폼
+	 @RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
+	 public String signup_form(HttpServletRequest request) {
+		 return "/users/signup_form";
+	}
+
+	 //아이디 중복 확인을 해서 json 문자열을 리턴해주는 메소드 
+	 @RequestMapping("/users/checkid")
+	 @ResponseBody
+	 public Map<String, Object> checkid(@RequestParam String users_id){
+		 //UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
+		 return service.isExist(users_id);
+	}
+	 // 회원 가입
+	 @RequestMapping(value = "/users/signup", method = RequestMethod.POST)
+	 public ModelAndView pwd_signup(HttpServletRequest request,ModelAndView mView,UsersDto dto) {
+		 service.addUsers(dto);
+		 mView.setViewName("users/signup");
+		 return mView;
+	}
+	//회원 정보 수정 요청 처리
+	@RequestMapping(value = "/users/update", method = RequestMethod.POST)
+	public String update(UsersDto dto) {
+		service.updateUsers(dto);
+		return "users/update";
+	}
+	//회원 수정 폼 요청 처리
+	@RequestMapping("/users/updateform")
+	public ModelAndView updateform(String users_id, ModelAndView mView) {
 		
-		@RequestMapping(value = "/users/signup_form", method = RequestMethod.GET)
-		public String signup_form(HttpServletRequest request) {
-			return "/users/signup_form";
-		}
+		service.getUser(users_id, mView);
 		
-		//아이디 중복 확인을 해서 json 문자열을 리턴해주는 메소드 
-		@RequestMapping("/users/checkid")
-		@ResponseBody
-		public Map<String, Object> checkid(@RequestParam String users_id){
-			//UsersService 가 리턴해주는 Map 을 리턴해서 json 문자열을 응답한다. 
-			return service.isExist(users_id);
-		}
-		
-		@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
-		public ModelAndView pwd_signup(HttpServletRequest request,ModelAndView mView,UsersDto dto) {
-			service.addUsers(dto);
-			mView.setViewName("users/signup");
-			return mView;
-		}
+		//view page 로 forward 이동해서 회원 수정폼 응답
+		mView.setViewName("users/updateform");
+		return mView;
+	}
+	//회원 삭제 요청 처리
+	@RequestMapping("/users/delete")
+	public String delete(String users_id)  {
+		//GET 방식 파라미터로 전달되는 회원 번호를 이용해서 회원정보를 삭제하고 
+		service.deleteUsers(users_id);
+		//리다일렉트 응답(클라이언트에게 해당 경로로 요청을 다시 하라고 강요)
+		return "users/delete";
+	}
 }

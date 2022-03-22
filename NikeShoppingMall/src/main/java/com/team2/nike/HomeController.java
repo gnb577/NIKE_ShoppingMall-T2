@@ -58,15 +58,15 @@ public class HomeController {
 		return "pwd_update";
 	}
 	
-	@RequestMapping("/updateform.do")
+	@RequestMapping("/users/updateform.do")
 	public String updateform(HttpServletRequest request) {
-		return "updateform";
+		return "users/updateform";
 	}
 	
 	
-	@RequestMapping("/update.do")
+	@RequestMapping("/users/update.do")
 	public String update(HttpServletRequest request) {
-		return "update";
+		return "users/update";
 	}
 	
 	@RequestMapping("/product/productlist.do")

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.team2.nike.users.dao.UsersDao;
 import com.team2.nike.users.dto.UsersDto;
@@ -55,5 +56,23 @@ public class UsersServiceImpl implements UsersService {
 		if(isValid) {
 			session.setAttribute("users_id", dto.getUsers_id());
 		}
+	}
+
+	@Override
+	public void updateUsers(UsersDto dto) {
+		dao.update(dto);
+		
+	}
+
+	@Override
+	public void deleteUsers(String users_id) {
+		dao.delete(users_id);
+		
+	}
+
+	@Override
+	public void getUser(String users_id, ModelAndView mView) {
+		UsersDto dto=dao.getUser(users_id);
+		mView.addObject("dto", dto);
 	}
 }

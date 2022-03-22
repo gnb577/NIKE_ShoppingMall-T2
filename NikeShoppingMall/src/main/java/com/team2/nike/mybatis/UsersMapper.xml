@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="users">
+	<!-- 회원 가입 -->
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO users(
 		users_id,users_name,users_pwd,
@@ -9,14 +10,32 @@
 		)VALUES(#{users_id},#{users_name},#{users_pwd},
 		#{users_email},#{users_sex},#{users_birthday},#{users_phoneNum},#{users_addr})
 	</insert>
+	
+	<!-- ? -->
 	<select id="isExist" parameterType="java.lang.String" resultType="string">
 		SELECT users_id 
 		FROM users
 		WHERE users_id=#{users_id}
 	</select>
+	
+	<!-- 회원 정보를 불러오기 -->
 	<select id="getUser" parameterType="string" resultType="usersDto">
 		SELECT *
 		FROM users
 		WHERE users_id=#{users_id }
 	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="update" parameterType="usersDto">
+		UPDATE users
+		SET users_name=#{users_name}, users_pwd=#{users_pwd}, users_email=#{users_email}, users_sex=#{users_sex}, users_birthday=#{users_birthday}, users_phoneNum=#{users_phoneNum}, users_addr=#{users_addr}, users_cardInfo=#{users_cardInfo}, users_point=#{users_point}
+		WHERE users_id=#{users_id}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM users
+		WHERE users_id=#{users_id}
+	</delete>
+	
 </mapper>

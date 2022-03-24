@@ -19,7 +19,7 @@ font-family: 'Noto Sans KR', sans-serif;
 <body>
 <jsp:include page="/include/navbar4.jsp"></jsp:include>
 <jsp:include page="/include/headbar.jsp"></jsp:include>
-	<div class="container" style="height:1400px;">
+	<div class="container" style="height:1100px;">
 		<div style="border-bottom:3px solid #a5a5a5; ">
 			<p style="margin-top:20px; font-size:30px;">장바구니</p>
 		</div>
@@ -57,7 +57,7 @@ font-family: 'Noto Sans KR', sans-serif;
 				</div>
 				<div class="col-6" style="border-top:2px solid #c6c4c4; border-right:2px solid #c6c4c4; ">
 					<div style="border-bottom:2px solid #c6c4c4;  height:60px; line-height:60px; font-weight:bold;">${tmp.product_name }</div>
-					<div style=" height:60px; line-height:60px;color:#007f41">오늘(목) 3/24 새벽 7시 전 도착</div>
+					<div style=" height:60px; line-height:60px;color:#007f41">내일(금) 3/25 새벽 7시 전 도착</div>
 				</div>
 				<div class="col-1" style="border-top:2px solid #c6c4c4; border-right:2px solid #c6c4c4; height:120px;  line-height:120px; text-align:center;" >${tmp.product_price }</div>
 				<div class="col-1" style="border-top:2px solid #c6c4c4;  border-right:2px solid  height:120px;  line-height:120px; text-align:center;"><a href="delete.do?cart_id=${tmp.cart_id }">x</a></div>
@@ -65,9 +65,9 @@ font-family: 'Noto Sans KR', sans-serif;
 		</div>
 		<c:set var="total" value="${total+(tmp.product_price * tmp.cart_count) }"></c:set>
 		</c:forEach>
-		</div>
-		<div>
-			<div class="row" style="border:3px solid #c6c4c4; font-size:12px; height:70px;line-height:65px; margin-top:40px;">
+
+		
+			<div class="row" style="border:3px solid #c6c4c4; font-size:12px; height:70px;line-height:65px; margin-top:100px;">
 				<div class="col-1"></div>
 				<div class="col-1" style="text-align:right;">총 상품가격</div>
 				<div class="col-1" style="font-weight:bold;text-align:left;"><c:out value="${total }"/>원</div>
@@ -100,7 +100,7 @@ font-family: 'Noto Sans KR', sans-serif;
   				<button class="btn" style="background-color:black; color:white; width:300px;height:60px; margin-right:20px;" onclick="location.href='${pageContext.request.contextPath }/pay/payform.do?total_price=${total }'">결제하기</button>
   			</div>
 		</div>
-	</div>
+<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>
 

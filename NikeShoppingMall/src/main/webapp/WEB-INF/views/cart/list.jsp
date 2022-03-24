@@ -25,6 +25,7 @@ font-family: 'Noto Sans KR', sans-serif;
 <body>
 <jsp:include page="/include/navbar4.jsp"></jsp:include>
 <jsp:include page="/include/headbar.jsp"></jsp:include>
+<<<<<<< HEAD
 	<div class="container" style="height:1100px;">
 		<div style="border-bottom:3px solid #a5a5a5; ">
 			<p style="margin-top:20px; font-size:30px;">장바구니</p>
@@ -109,5 +110,4 @@ font-family: 'Noto Sans KR', sans-serif;
 <jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>
-
 

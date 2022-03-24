@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" sizes="16x16 32x32 64x64" href="${pageContext.request.contextPath }/resources/img/nike3.png"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Team2 Nike Shop! list</title>
 </head>
 <body>
 	<div class="container">

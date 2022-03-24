@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" sizes="16x16 32x32 64x64" href="${pageContext.request.contextPath }/resources/img/nike3.png"/>
 <meta charset="UTF-8">
-<title>상품 삽입 공간</title>
+<title>Team2 Nike Shop! 상품 추가</title>
 <jsp:include page="/include/resource.jsp"></jsp:include>
 </head>
 <body>

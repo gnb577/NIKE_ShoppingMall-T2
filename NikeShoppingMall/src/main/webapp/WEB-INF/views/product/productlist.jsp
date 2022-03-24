@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 .back{
 background-color:white;
 }
@@ -60,17 +61,17 @@ width:1000px;
 <jsp:include page="/include/headbar.jsp"></jsp:include>
 <div class="container" style="height:1500px; font-family: 'Noto Sans KR', sans-serif;;">
    <div class="text-start mb-2">
-      <h1 style="color:#ff47a9; text-align:center; margin-top:30px;" >${list[0].product_scategory}</h1>
+      <h1 style="color:black; font-family: 'Jeju Gothic', sans-serif; text-align:center; margin-top:30px;" >${list[0].product_scategory}</h1>
       <div style="display:block; text-align:left;">
          <ul class="nav justify-content-center mt-3 " style="font-size:18px;">
               <li class="nav-item back">
-                <a class="nav-link active top-nav" aria-current="page" href="#" onMouseOver="this.style.color='#ff47a9'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white; border-right:3px solid #969696;  color:#7f7f7f">Men</a>
+                <a class="nav-link active top-nav" aria-current="page" href="#" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white; border-right:3px solid #969696;  color:#7f7f7f">Men</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link top-nav" href="#"  onMouseOver="this.style.color='#ff47a9'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white; border-right:3px solid #969696;  color:#7f7f7f">${list[0].product_lcategory}</a>
+                <a class="nav-link top-nav" href="#"  onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white; border-right:3px solid #969696;  color:#7f7f7f">${list[0].product_lcategory}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link top-nav" href="#" onMouseOver="this.style.color='#ff47a9'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white;  color:#7f7f7f">${list[0].product_scategory}</a>
+                <a class="nav-link top-nav" href="#" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#7f7f7f'" style="background-color:white;  color:#7f7f7f">${list[0].product_scategory}</a>
               </li>
          </ul>
       </div>
